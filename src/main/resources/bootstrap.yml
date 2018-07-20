@@ -12,6 +12,13 @@ zuul:
     myProduct:
       path: /myProduct/**
       serviceId: product
+      sensitiveHeaders:
+#简洁的写法
+#    product: /myProduct/**
+  ignored-patterns:
+    - /**/product/test
+#    - /product/product/test
+#    - /myProduct/product/test
 management:
   security:
     enabled: false
