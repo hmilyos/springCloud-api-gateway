@@ -19,7 +19,7 @@ public class TokenFilter extends ZuulFilter {
         return PRE_TYPE;
     }
 
-    @Override   //指定其在过滤器链上所处的顺序
+    @Override   //指定其在过滤器链上所处的顺序,数字越小，优先级越高
     public int filterOrder() {
         return PRE_DECORATION_FILTER_ORDER - 1;
     }
