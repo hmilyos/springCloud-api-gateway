@@ -37,7 +37,7 @@ public class AuthBuyerFilter extends ZuulFilter {
     public boolean shouldFilter() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
-
+        //当访问的是create就开启这个过滤器
         if ("/order/order/create".equals(request.getRequestURI())) {
             return true;
         }
@@ -49,9 +49,8 @@ public class AuthBuyerFilter extends ZuulFilter {
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
-
         /**
-         * /order/create 只能买家访问(cookie里有openid)
+         * /order/create 只能买家访问(cookie里有openid，redis里也有)
          */
         Cookie cookie = CookieUtil.get(request, "openid");
         if (cookie == null || StringUtils.isEmpty(cookie.getValue())
