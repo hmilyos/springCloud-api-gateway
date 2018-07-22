@@ -39,7 +39,7 @@ public class AuthBuyerFilter extends ZuulFilter {
         HttpServletRequest request = requestContext.getRequest();
         //当访问的是create就开启这个过滤器
         if ("/order/order/create".equals(request.getRequestURI())) {
-            return true;
+            return false;
         }
 
         return false;

@@ -41,7 +41,7 @@ public class AuthSellerFilter extends ZuulFilter {
         HttpServletRequest request = requestContext.getRequest();
 
         if ("/order/order/finish".equals(request.getRequestURI())) {
-            return true;
+            return false;
         }
 
         return false;
